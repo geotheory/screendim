@@ -1,49 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, minimum-scale=1.0">
-    <title>Screen Dimensions</title>
-    <meta name="screen-dimensions" content="Screen Dimensions">
-    <script type="text/javascript" src="popper.min.js"></script>
-    <script type="text/javascript" src="jquery-3.2.1.min.js"></script>
-    <style>
-      .rep{ font-size: 14px;}
-      .top{ position: fixed; top: 10px;  }
-    </style>
-  </head>
-  <body>
-    <div class="container">
-      <div class="top">
-        <pre style='font-size: 22px;'><center>Screen Dimensions</center></pre>
-        <pre class='rep'><center id="report1"></center></pre>
-        <pre class='rep'><center id="report2"></center></pre>
-        <pre class='rep'><center id="report3"></center></pre>
-      </div>
-      <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
-      <p>scrolling..</p><br /><br /><br />
-      <p>scrolling..</p><br /><br /><br />
-      <p>scrolling..</p><br /><br /><br />
-      <p>scrolling..</p><br /><br /><br />
-      <p>scrolling..</p><br /><br /><br />
-      <p>scrolling..</p><br /><br /><br />
-      <p>scrolling..</p><br /><br /><br />
-      <p>scrolling..</p><br /><br /><br />
-      <p>scrolling..</p><br /><br /><br />
-      <p>Fin.</p>
-    </div>
-    <script>
-      function screensize() {
-        var rep1 = $(window).width() + ' x ' + $(window).height();
-        var rep2 = window.innerWidth + ' x ' + window.innerHeight;
-        var rep3 = window.outerWidth + ' x ' + window.outerHeight;
-        document.getElementById('report1').innerHTML = '$(window).width() - ' + rep1;
-        document.getElementById('report2').innerHTML = 'window.innerWidth - ' + rep2;
-        document.getElementById('report3').innerHTML = 'window.outerWidth - ' + rep3;
-        console.log(rep1 + '   ' + rep2 + '   ' + rep3);
-      }
-      screensize();
-      $( window ).resize(function() { screensize(); });
-    </script>
-  </body>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0">
+  <title>Screen Dimensions</title>
+  <script type="text/javascript" src="popper.min.js"></script>
+  <script type="text/javascript" src="jquery-3.2.1.min.js"></script>
+
+  <style>
+    .rep { font-size: 14px; }
+    #top { position: fixed; padding: 10px; }
+    #middle { background-color: yellow; }
+    #bottom { background-color: cyan; }
+    .flash { color: red !important; }
+    body { padding: 0px; margin: 0px; }
+  </style>
+
+</head>
+<body>
+
+  <div id="top">
+    <pre id="title" style='font-size: 30px;'>Screen Dimensions</pre>
+    <pre id="report1" class='rep'></pre>
+    <pre id="report2" class='rep'></pre><br />
+    <pre id="report3" class='rep'></pre>
+  </div>
+  <div id='middle' class='pageHeight'></div>
+  <div id='bottom' class='pageHeight'></div>
+
+<script>
+
+function bottomAlert() {
+  if($(window).scrollTop() + $(window).height() > $(document).height() - 1) {
+    document.getElementById('report3').innerHTML = 'reached bottom';
+    // window.scrollTo(0,document.body.scrollHeight);
+  } else { document.getElementById('report3').innerHTML = ''; }
+}
+
+function screensize() {
+  var rep1 = $(window).width() + ' x ' + $(window).height();
+  var rep2 = window.innerWidth + ' x ' + window.innerHeight;
+  document.getElementById('report1').innerHTML = '$(window).width()/height(): ' + rep1;
+  document.getElementById('report2').innerHTML = 'window.innerWidth/Height: ' + rep2;
+
+  $('#title').toggleClass('flash'); // flash title colour to show function working
+  $('.pageHeight').width(window.innerWidth + 'px');
+  $('.pageHeight').height(window.innerHeight + 'px');
+}
+
+screensize(); // run on load
+$( window ).resize(function() { screensize(); });
+$( window ).scroll(function() { screensize(); bottomAlert(); });
+
+</script>
+</body>
 </html>
