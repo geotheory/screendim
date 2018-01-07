@@ -1,37 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, minimum-scale=1.0">
-        <title>Screen Dimensions</title>
-        <meta name="screen-dimensions" content="Screen Dimensions">
-        <script type="text/javascript" src="popper.min.js"></script>
-        <script type="text/javascript" src="jquery-3.2.1.min.js"></script>
-        <style>.rep{ font-size: 18px;}</style>
-    </head>
-    <body>
-        <div class="container">
-            <pre style='font-size: 30px;'><center>Screen Dimensions</center></pre>
-            <pre class='rep'><center id="report1"></center></pre>
-            <pre class='rep'><center id="report2"></center></pre>
-            <pre class='rep'><center id="report3"></center></pre>
-            <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><center><p>scrolling..</p></center>
-            <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><center><p>scrolling..</p></center>
-            <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><center><p>scrolling..</p></center>
-            <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><center><p>Fin.</p></center>
-        </div>
-        <script>
-          function screensize() {
-            var rep1 = $(window).width() + ' x ' + $(window).height();
-            var rep2 = window.innerWidth + ' x ' + window.innerHeight;
-            var rep3 = window.outerWidth + ' x ' + window.outerHeight;
-            document.getElementById('report1').innerHTML = '$(window).width() - ' + rep1;
-            document.getElementById('report2').innerHTML = 'window.innerWidth - ' + rep2;
-            document.getElementById('report3').innerHTML = 'window.outerWidth - ' + rep3;
-            console.log(rep1 + '   ' + rep2 + '   ' + rep3);
-          }
-          screensize();
-          $( window ).resize(function() { screensize(); });
-        </script>
-    </body>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0">
+    <title>Screen Dimensions</title>
+    <meta name="screen-dimensions" content="Screen Dimensions">
+    <script type="text/javascript" src="popper.min.js"></script>
+    <script type="text/javascript" src="jquery-3.2.1.min.js"></script>
+    <style>
+      .rep{ font-size: 14px;}
+      .top{ position: fixed; top: 10px;  }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="top">
+        <pre style='font-size: 22px;'><center>Screen Dimensions</center></pre>
+        <pre class='rep'><center id="report1"></center></pre>
+        <pre class='rep'><center id="report2"></center></pre>
+        <pre class='rep'><center id="report3"></center></pre>
+      </div>
+      <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+      <p>scrolling..</p><br /><br /><br />
+      <p>scrolling..</p><br /><br /><br />
+      <p>scrolling..</p><br /><br /><br />
+      <p>scrolling..</p><br /><br /><br />
+      <p>scrolling..</p><br /><br /><br />
+      <p>scrolling..</p><br /><br /><br />
+      <p>scrolling..</p><br /><br /><br />
+      <p>scrolling..</p><br /><br /><br />
+      <p>scrolling..</p><br /><br /><br />
+      <p>Fin.</p>
+    </div>
+    <script>
+      function screensize() {
+        var rep1 = $(window).width() + ' x ' + $(window).height();
+        var rep2 = window.innerWidth + ' x ' + window.innerHeight;
+        var rep3 = window.outerWidth + ' x ' + window.outerHeight;
+        document.getElementById('report1').innerHTML = '$(window).width() - ' + rep1;
+        document.getElementById('report2').innerHTML = 'window.innerWidth - ' + rep2;
+        document.getElementById('report3').innerHTML = 'window.outerWidth - ' + rep3;
+        console.log(rep1 + '   ' + rep2 + '   ' + rep3);
+      }
+      screensize();
+      $( window ).resize(function() { screensize(); });
+    </script>
+  </body>
 </html>
