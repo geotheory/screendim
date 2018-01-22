@@ -21,8 +21,11 @@
   <div id="top">
     <pre id="title" style='font-size: 30px;'>Screen Dimensions</pre>
     <pre id="report1" class='rep'></pre>
-    <pre id="report2" class='rep'></pre><br />
+    <pre id="report2" class='rep'></pre>
+    <pre id="report4" class='rep'></pre>
+    <pre id="report5" class='rep'></pre><br />
     <pre id="report3" class='rep'></pre>
+
   </div>
   <div id='middle' class='pageHeight'></div>
   <div id='bottom' class='pageHeight'></div>
@@ -39,8 +42,13 @@ function bottomAlert() {
 function screensize() {
   var rep1 = $(window).width() + ' x ' + $(window).height();
   var rep2 = window.innerWidth + ' x ' + window.innerHeight;
+  var rep4 = window.outerWidth + ' x ' + window.outerHeight;
+  var rep5 = document.documentElement.clientWidth + ' x ' + document.documentElement.clientHeight;
   document.getElementById('report1').innerHTML = '$(window).width()/height(): ' + rep1;
   document.getElementById('report2').innerHTML = 'window.innerWidth/Height: ' + rep2;
+  document.getElementById('report4').innerHTML = 'window.outerWidth/Height: ' + rep4;
+  document.getElementById('report5').innerHTML = 'document.documentElement.clientWidth/\n\
+  Height: ' + rep5;
 
   $('#title').toggleClass('flash'); // flash title colour to show function working
   $('.pageHeight').width(window.innerWidth + 'px');
